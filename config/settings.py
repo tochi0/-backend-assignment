@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 import os
 from pathlib import Path
+from pickle import FALSE
 
 from configurations import Configuration, values
 from dotenv import find_dotenv, load_dotenv
@@ -26,7 +27,7 @@ class Common(Configuration):
     # SECURITY WARNING: don't run with debug turned on in production!
     DEBUG = values.BooleanValue(False)
 
-    ALLOWED_HOSTS = values.ListValue([])
+    ALLOWED_HOSTS = ['https://tochi-app.herokuapp.com/']
 
     # Application definition
     INSTALLED_APPS = [
@@ -185,7 +186,8 @@ class Staging(Common):
     """
     The in-staging settings.
     """
-    
+    DEBUG = FALSE
+    ALLOWED_HOSTS = ['https://tochi-app.herokuapp.com/']
     # Security
     SESSION_COOKIE_SECURE = values.BooleanValue(True)
     SECURE_BROWSER_XSS_FILTER = values.BooleanValue(True)
