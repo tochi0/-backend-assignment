@@ -25,9 +25,9 @@ class Common(Configuration):
     SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
 
     # SECURITY WARNING: don't run with debug turned on in production!
-    DEBUG = values.BooleanValue(False)
+    DEBUG = values.BooleanValue(True)
 
-    ALLOWED_HOSTS = ['https://tochi-app.herokuapp.com/']
+    ALLOWED_HOSTS = ['tochi-app.herokuapp.com']
 
     # Application definition
     INSTALLED_APPS = [
@@ -167,9 +167,6 @@ class Development(Common):
     """
     The in-development settings and the default configuration.
     """
-    DEBUG = True
-
-    ALLOWED_HOSTS = []
 
     INTERNAL_IPS = [
         '127.0.0.1'
@@ -186,8 +183,8 @@ class Staging(Common):
     """
     The in-staging settings.
     """
-    DEBUG = FALSE
-    ALLOWED_HOSTS = ['https://tochi-app.herokuapp.com/']
+    DEBUG = False
+    ALLOWED_HOSTS = ['tochi-app.herokuapp.com']
     # Security
     SESSION_COOKIE_SECURE = values.BooleanValue(True)
     SECURE_BROWSER_XSS_FILTER = values.BooleanValue(True)
